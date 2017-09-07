@@ -1,6 +1,3 @@
-const lis = document.querySelectorAll('li'); // Select li items
-lis.forEach(li => li.addEventListener('click', completeItem)); // Listen for click on li items
-
 // const addItem = document.querySelector('#addItem'); // Select + button
 // addItem.addEventListener('click', createItem); // Listen for click on + button
 
@@ -8,7 +5,8 @@ const input = document.querySelector('input[type="text"]');
 input.addEventListener('keydown', createItem);
 
 const ul = document.querySelector('ul'); // Select ul
-ul.addEventListener('click', deleteItemHelper('span', deleteItem)); // Listen for clicks on delete buttons
+ul.addEventListener('click', helper('span', deleteItem)); // Listen for clicks on delete buttons
+ul.addEventListener('click', helper('li', completeItem));
 
 // Mark li complete by adding class
 function completeItem() {
@@ -38,11 +36,11 @@ function createItem(event) {
   }
 }
 
-function deleteItemHelper(deleteButton, handler) {
+function helper(selector, handler) {
   return function(event) {
     var targ = event.target;
     do {
-      if (targ.matches(deleteButton)) {
+      if (targ.matches(selector)) {
         handler.call(targ, event);
       }
     } while ((targ = targ.parentNode) && targ != event.currentTarget);
