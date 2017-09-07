@@ -1,0 +1,27 @@
+body {
+  background: seagreen;
+}
+
+#container {
+  background: whitesmoke;
+  width: 360px;
+  margin: 0 auto;
+  border: 2px solid grey;
+}
+
+h1 {
+
+}
+
+input {
+
+}
+
+ul {
+
+}
+
+.complete {
+  color: grey;
+  text-decoration: line-through;
+}
