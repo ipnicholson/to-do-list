@@ -1,24 +1,32 @@
 body {
   background: seagreen;
+  margin: 0;
+  padding: 0;
+}
+
+#outer-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 #container {
   background: whitesmoke;
-  width: 360px;
-  margin: 0 auto;
+  padding: 2rem;
   border: 2px solid grey;
+  text-align: center;
 }
 
 h1 {
-
 }
 
 input {
-
 }
 
 ul {
-
+  text-align: left;
+  padding: 0.25rem;
 }
 
 .complete {
