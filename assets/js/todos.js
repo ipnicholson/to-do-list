@@ -15,9 +15,7 @@ function completeItem() {
 
 // Delete li
 function deleteItem(event) {
-  console.log("clicked on '%s'", this.textContent);
   this.parentNode.remove();
-  event.stopPropagation();
   // TO FIX - needs fadeout behavior
 }
 
@@ -36,6 +34,7 @@ function createItem(event) {
   }
 }
 
+// Helper function for event delegation
 function helper(selector, handler) {
   return function(event) {
     var targ = event.target;
