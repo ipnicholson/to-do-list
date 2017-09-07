@@ -7,8 +7,8 @@ lis.forEach(li => li.addEventListener('click', completeItem)); // Listen for cli
 const input = document.querySelector('input[type="text"]');
 input.addEventListener('keydown', createItem);
 
-const deleteButton = document.querySelectorAll('span'); // Select delete spans
-deleteButton.forEach(button => button.addEventListener('click', deleteItem)); // Listen for clicks on delete buttons
+const ul = document.querySelector('ul'); // Select ul
+ul.addEventListener('click', deleteItemHelper('span', deleteItem)); // Listen for clicks on delete buttons
 
 // Mark li complete by adding class
 function completeItem() {
@@ -17,6 +17,7 @@ function completeItem() {
 
 // Delete li
 function deleteItem(event) {
+  console.log("clicked on '%s'", this.textContent);
   this.parentNode.remove();
   event.stopPropagation();
   // TO FIX - needs fadeout behavior
@@ -37,4 +38,13 @@ function createItem(event) {
   }
 }
 
-
+function deleteItemHelper(deleteButton, handler) {
+  return function(event) {
+    var targ = event.target;
+    do {
+      if (targ.matches(deleteButton)) {
+        handler.call(targ, event);
+      }
+    } while ((targ = targ.parentNode) && targ != event.currentTarget);
+  }
+}
